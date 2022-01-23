@@ -1,4 +1,4 @@
-export default function formatDate(timestamp) {
+export default function formatDate(timestamp: string) {
   let date = new Date(timestamp);
 
   const months = [

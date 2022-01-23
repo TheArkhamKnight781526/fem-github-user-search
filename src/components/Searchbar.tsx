@@ -1,10 +1,10 @@
+// @ts-ignore
 import preact from "preact";
 import "@/SCSS/search.scss";
 import {useRecoilValue, useRecoilState, atom} from "recoil";
 import { themeAtom } from "@/app";
 import SearchIcon from "@/assets/icon-search.svg";
 import { useDebouncedCallback } from 'use-debounce-preact';
-import createState from "@/TS/createState";
 import SearchResults from "@/components/SearchResults";
 import { useState } from "preact/compat";
 
@@ -39,16 +39,17 @@ const Searchbar: preact.FunctionalComponent = () => {
         setLoading(false);
       }, 1000, []
     )
-
-    return <div id="search">
+  return <div id="search">
       <div id="searchbar" className={theme}>
-        <SearchIcon id="search-icon"/>
+        <SearchIcon />
         <input type="text" id="search" placeholder="Search GitHub username..."
                onChange={(e) => {
-                if(e.target.value && e.target.value !== '') {
+                // @ts-ignore
+                 if(e.target.value && e.target.value !== '') {
                   setShowResults(true);
                   setLoading(true);
-                  debounced(e.target.value);
+                  // @ts-ignore
+                   debounced(e.target.value);
                 } else {
                   setShowResults(false);
                   setLoading(false);
@@ -56,7 +57,7 @@ const Searchbar: preact.FunctionalComponent = () => {
         }}/>
         <button id="button-search">Search</button>
       </div>
-      <SearchResults show={showResults} loading={loading} />
+      <SearchResults loading={loading} />
     </div>
 }
 

@@ -1,9 +1,15 @@
+// @ts-nocheck
+
 import Loading from '@/assets/loading.svg';
 import { userAtom } from "@/app";
 import { useRecoilValue, useRecoilState } from "recoil";
 import {searchResults} from "@/components/Searchbar";
 import { showAtom } from "@/components/Searchbar";
 
+interface userProps {
+  login: string
+  avatar_url: string
+}
 
 export default function SearchResults({  loading }: {  loading: boolean}) {
   const results = useRecoilValue(searchResults);
@@ -15,7 +21,7 @@ export default function SearchResults({  loading }: {  loading: boolean}) {
       <Loading width="100px" id="loading-animation" className={loading ? 'show' : 'hide'} />
       <div id="results" className={loading ? 'hide' : 'show'}>
         {
-          results.items.map((user) => {
+          results.items.map((user: userProps) => {
             return (
               <div className="result" onClick={() => {
                 fetch(`https://api.github.com/users/${user.login}`).then(res => res.json().then(res => setUser(res)));

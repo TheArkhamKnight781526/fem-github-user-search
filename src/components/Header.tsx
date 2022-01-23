@@ -1,3 +1,4 @@
+// @ts-ignore
 import { FunctionComponent } from "preact";
 import '@/SCSS/header.scss';
 import { useRecoilState } from "recoil";
