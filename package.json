@@ -1,0 +1,24 @@
+{
+  "name": "solution",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.6.4",
+    "recoil": "^0.5.2",
+    "recoil-persist": "^4.0.0",
+    "vite-plugin-fonts": "^0.2.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.1.5",
+    "@types/vite-plugin-react-svg": "^0.2.0",
+    "sass": "^1.48.0",
+    "typescript": "^4.4.4",
+    "use-debounce-preact": "^1.0.2",
+    "vite": "^2.7.2",
+    "vite-plugin-react-svg": "^0.2.0"
+  }
+}

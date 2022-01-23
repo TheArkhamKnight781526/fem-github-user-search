@@ -1,0 +1,193 @@
+@import '_variables';
+@import 'general';
+
+#container {
+  width: 100vw;
+  max-width: 730px;
+  min-width: 365px;
+  margin: 0 auto;
+  padding: 31px 24px;
+
+  #info {
+    margin-top: 24px;
+    padding: 32px 24px;
+    border-radius: $border-radius;
+    position: relative;
+
+    @include themed {
+      background: t('container-background');
+    }
+
+    #top {
+      display: flex;
+      align-items: center;
+      margin-bottom: 32px;
+
+      @include desktop {
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      #image {
+        @include desktop {
+          margin-right: 0 !important;
+          position: absolute;
+          left: 0;
+          transform: translateX(50%);
+        }
+
+        @include tablet {
+          margin-right: 41px;
+          width: 117px;
+        }
+
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: center;
+        width: 70px;
+        border-radius: 50%;
+        margin-right: 19.5px;
+
+        @include themed {
+          background: t('text-high-contrast');
+        }
+      }
+
+      #top-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+
+        @include desktop {
+          width: calc(100% - 202px);
+          margin-left: auto;
+        }
+
+        #name {
+          font-size: 16px;
+          line-height: normal;
+
+          @include tablet {
+            font-size: 26px;
+          }
+
+          @include themed {
+            color: t('text-high-contrast');
+          }
+        }
+
+        #username {
+          color: $accent;
+          margin-bottom: 6px;
+
+          @include tablet {
+            font-size: 16px;
+          }
+        }
+
+        #date-joined {
+
+          @include tablet {
+            font-size: 15px;
+          }
+
+          @include themed {
+            color: t('text-low-contrast');
+          }
+        }
+      }
+    }
+
+    #bottom {
+      width: 100%;
+      margin-left: auto;
+
+      @include desktop {
+        width: calc(100% - 202px);
+      }
+
+      #description {
+        @include themed {
+          color: t('text-low-contrast');
+        }
+      }
+
+      #stats {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        margin-top: 23px;
+        border-radius: $border-radius;
+
+        @include themed {
+          background: t('background');
+        }
+
+        .stat {
+          text-align: center;
+
+          @include tablet {
+            text-align: left;
+          }
+
+          @include themed {
+            h4 {
+              color: t('text-low-contrast');
+              font-size: 11px;
+
+              @include tablet {
+                font-size: 13px;
+              }
+            }
+
+            span {
+              color: t('text-high-contrast');
+              font-weight: bold;
+              font-size: 16px;
+
+              @include tablet {
+                font-size: 22px;
+              }
+            }
+          }
+        }
+      }
+
+      #links {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-top: 16px;
+
+        @include tablet {
+          grid-template-columns: 50% 50%;
+        }
+
+        .link {
+          display: block;
+          position: relative;
+          width: 100%;
+          overflow: scroll;
+
+          &:not(:last-child) {
+            margin-bottom: 16px;
+          }
+
+          a, span {
+            position: absolute;
+            left: 33px;
+          }
+
+          @include themed {
+            color: t('text-medium-contrast');
+
+            svg {
+              fill: t('text-medium-contrast') !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

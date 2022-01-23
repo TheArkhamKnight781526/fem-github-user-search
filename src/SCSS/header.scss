@@ -1,0 +1,30 @@
+@import '_variables';
+
+header#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 74px;
+  cursor: pointer;
+
+  #theme-toggle {
+    display: flex;
+
+    #theme {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-right: 16px;
+    }
+
+    svg {
+      @include themed() {
+        fill: t('theme-bg');
+      }
+    }
+  }
+
+  @include themed() {
+    color: t('theme-bg');
+  }
+}

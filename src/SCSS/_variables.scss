@@ -1,0 +1,93 @@
+// Colors
+
+$accent: #0079FF;
+$accent-active: #60ABFF;
+$error: #F74646;
+
+$themes: (
+    light: (
+        "text-low-contrast": #697C9A,
+        "text-medium-contrast": #4B6A9B,
+        "text-high-contrast": #2B3442,
+        "background": #F6F8FF,
+        "container-background": #FEFEFE,
+        "theme-bg": #697C9A,
+        "theme-bg-active": #222731,
+        "unavailable": #4B6A9B,
+    ),
+    dark: (
+        "text-low-contrast": white,
+        "text-medium-contrast": white,
+        "text-high-contrast": white,
+        "background": #141D2F,
+        "container-background": #1E2A47,
+        "theme-bg": #FFFFFF,
+        "theme-bg-active": #90A4D4,
+        "unavailable": #FFFFFFF,
+    )
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+     body.#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}
+
+// Typography
+
+@mixin heading-1 {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 38px;
+}
+
+@mixin heading-2 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+@mixin heading-3 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin heading-4 {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin body {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+// Sizes
+
+$tablet: 768px;
+$desktop: 1440px;
+$border-radius: 15px;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet) {
+     @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}

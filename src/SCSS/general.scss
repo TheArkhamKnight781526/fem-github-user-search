@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    font-family: "Space Mono";
+    font-weight: 400;
+    transition: color 0.3s ease, background-color 0.3s ease, fill 0.3s ease;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    &.light {
+        background: #F6F8FF;
+    }
+
+    &.dark {
+        background: #141D2F;
+    }
+}
+
+h1 {
+    @include heading-1;
+}
+
+h2 {
+    @include heading-2;
+}
+
+h3 {
+    @include heading-3;
+}
+
+h4 {
+    @include heading-4;
+}
+
+.body {
+    @include body;
+}
+
+.unavailable {
+    filter: opacity(50%);
+
+    * {
+        @include themed {
+            color: t('text-medium-contrast');
+            fill: t('text-medium-contrast');
+        }
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
